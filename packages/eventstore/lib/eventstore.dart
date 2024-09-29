@@ -5,7 +5,7 @@ import 'package:nip01/nip01.dart';
 
 abstract interface class Store {
   void init();
-  void dispose();
+  void close();
 
   Stream<Event> queryEvents(Filters filter);
   deleteEvent(Event event);
