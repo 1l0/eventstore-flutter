@@ -1,6 +1,10 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:nip01/nip01.dart';
 
-// b.DB.ExecContext(ctx, "DELETE FROM event WHERE id = $1", evt.ID)
-
-void deleteEventImpl(DatabaseExecutor client, Event event) {}
+Future<int> deleteEventImpl(DatabaseExecutor client, Event event) async {
+  return await client.delete(
+    'event',
+    where: 'id = ?',
+    whereArgs: [event.id],
+  );
+}

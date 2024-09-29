@@ -46,7 +46,7 @@ CREATE INDEX IF NOT EXISTS kindtimeidx ON event(kind,created_at DESC)''');
   }();
 
   @override
-  void init() {
+  Future<void> init() async {
     if (kIsWeb) {
       databaseFactoryOrNull = databaseFactoryFfiWeb;
     } else if (Platform.isLinux || Platform.isWindows) {
@@ -56,7 +56,7 @@ CREATE INDEX IF NOT EXISTS kindtimeidx ON event(kind,created_at DESC)''');
   }
 
   @override
-  void close() async {
+  Future<void> close() async {
     var db = await _db;
     if (db.isOpen) {
       await db.close();
@@ -70,13 +70,14 @@ CREATE INDEX IF NOT EXISTS kindtimeidx ON event(kind,created_at DESC)''');
   }
 
   @override
-  Future<void> deleteEvent(Event event) async {
+  Future<int> deleteEvent(Event event) async {
     var db = await _db;
     return deleteEventImpl(db, event);
   }
 
   @override
-  Future<void> saveEvent(Event event) {
-    return saveEventImpl(event);
+  Future<void> saveEvent(Event event) async {
+    var db = await _db;
+    return saveEventImpl(db, event);
   }
 }

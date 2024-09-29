@@ -1,17 +1,28 @@
+import 'dart:convert';
+
+import 'package:sqflite/sqflite.dart';
 import 'package:nip01/nip01.dart';
 
-/*
-	tagsj, _ := json.Marshal(evt.Tags)
-	res, err := b.DB.ExecContext(ctx, `
-        INSERT INTO event (id, pubkey, created_at, kind, tags, content, sig)
-        VALUES ($1, $2, $3, $4, $5, $6, $7)
-    `, evt.ID, evt.PubKey, evt.CreatedAt, evt.Kind, tagsj, evt.Content, evt.Sig)
-	if err != nil {
-		return err
-	}
-
- */
-
-Future<void> saveEventImpl(Event event) async {
-  // TODO:
+Future<void> saveEventImpl(DatabaseExecutor client, Event event) async {
+  final values = <String, Object?>{
+    'id': event.id,
+    'pubkey': event.pubkey,
+    'created_at': event.createdAt,
+    'kind': event.kind,
+    'content': event.content,
+    'tags': jsonEncode(event.tags), // TODO:
+    'sig': event.sig,
+  };
+  final db = client as Database;
+  await db.transaction((txn) async {
+    if (await txn.update(
+          'event',
+          values,
+          where: 'id = ?',
+          whereArgs: [event.id],
+        ) ==
+        0) {
+      await txn.insert('event', values);
+    }
+  });
 }
