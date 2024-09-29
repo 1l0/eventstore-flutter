@@ -22,11 +22,6 @@ class SqfliteBackend implements Store {
 
   @override
   void init() {
-    // TODO:
-  }
-
-  @override
-  static void ensureInitialized() {
     if (kIsWeb) {
       databaseFactoryOrNull = databaseFactoryFfiWeb;
     } else if (Platform.isLinux || Platform.isWindows) {
