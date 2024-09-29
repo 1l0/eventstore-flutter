@@ -4,7 +4,7 @@ import 'package:fixnum/fixnum.dart';
 import 'package:nip01/nip01.dart';
 
 abstract interface class Store {
-  void init();
+  void ensureInitialized();
   void dispose();
 
   Stream<Event> queryEvents(Filters filter);

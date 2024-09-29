@@ -20,7 +20,7 @@ dependencies:
     git:
       url: https://github.com/1l0/eventstore-flutter.git
       path: packages/eventstore
-      version: ^0.0.2
+      ref: master
   sqflite_common_ffi: ^2.3.3+1
   sqflite_common_ffi_web: ^0.4.5+3
 
