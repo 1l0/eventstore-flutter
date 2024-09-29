@@ -1,0 +1,20 @@
+name: eventstore_sqflite
+description: "A new Flutter package project."
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.5.3
+  flutter: ">=1.17.0"
+
+dependencies:
+  fixnum: ^1.1.0
+  flutter:
+    sdk: flutter
+  nostr_core_dart:
+    path: ../../../../0xchat-app/nostr-dart
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
