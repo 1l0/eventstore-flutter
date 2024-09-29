@@ -4,14 +4,14 @@ import 'package:fixnum/fixnum.dart';
 import 'package:nip01/nip01.dart';
 
 abstract interface class Store {
-  void init();
-  void close();
+  Future<void> init();
+  Future<void> close();
 
-  List<Event> queryEvents(Filters filter);
-  void deleteEvent(Event event);
-  void saveEvent(Event event);
+  Future<List<Event>> queryEvents(Filters filter);
+  Future<void> deleteEvent(Event event);
+  Future<void> saveEvent(Event event);
 }
 
 abstract interface class Counter {
-  Int64 countEvents(Filters filter);
+  Future<Int64> countEvents(Filters filter);
 }
