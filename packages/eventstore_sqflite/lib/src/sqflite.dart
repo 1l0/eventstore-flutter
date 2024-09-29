@@ -5,6 +5,10 @@ import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 import 'package:eventstore/eventstore.dart';
 import 'package:nip01/nip01.dart';
 
+import 'query.dart';
+import 'delete.dart';
+import 'save.dart';
+
 class SqfliteBackend implements Store {
   SqfliteBackend({
     required this.path,
@@ -60,18 +64,19 @@ CREATE INDEX IF NOT EXISTS kindtimeidx ON event(kind,created_at DESC)''');
   }
 
   @override
-  Stream<Event> queryEvents(Filters filter) {
-    // TODO:
-    return Stream.empty();
+  Future<List<Event>> queryEvents(Filters filter) async {
+    var db = await _db;
+    return queryEventsImpl(db, filter);
   }
 
   @override
-  deleteEvent(Event event) {
-    // TODO:
+  Future<void> deleteEvent(Event event) async {
+    var db = await _db;
+    return deleteEventImpl(db, event);
   }
 
   @override
-  saveEvent(Event event) {
-    // TODO:
+  Future<void> saveEvent(Event event) {
+    return saveEventImpl(event);
   }
 }

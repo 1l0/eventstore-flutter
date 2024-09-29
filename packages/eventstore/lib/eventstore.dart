@@ -7,9 +7,9 @@ abstract interface class Store {
   void init();
   void close();
 
-  Stream<Event> queryEvents(Filters filter);
-  deleteEvent(Event event);
-  saveEvent(Event event);
+  List<Event> queryEvents(Filters filter);
+  void deleteEvent(Event event);
+  void saveEvent(Event event);
 }
 
 abstract interface class Counter {

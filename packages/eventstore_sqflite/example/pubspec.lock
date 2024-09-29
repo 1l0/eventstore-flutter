@@ -101,11 +101,11 @@ packages:
     dependency: transitive
     description:
       path: "packages/eventstore"
-      ref: HEAD
-      resolved-ref: "7a672e595db35caef383445745444ad3c3042c64"
+      ref: "9b5e54cea7f9cd8eb9aed37abc9a0d4159e7bebf"
+      resolved-ref: "9b5e54cea7f9cd8eb9aed37abc9a0d4159e7bebf"
       url: "https://github.com/1l0/eventstore-flutter.git"
     source: git
-    version: "0.0.1"
+    version: "0.0.2"
   eventstore_sqflite:
     dependency: "direct main"
     description:
@@ -297,6 +297,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  sqflite:
+    dependency: transitive
+    description:
+      name: sqflite
+      sha256: ff5a2436ef8ebdfda748fbfe957f9981524cb5ff11e7bafa8c42771840e8a788
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.3+2"
   sqflite_common:
     dependency: transitive
     description:
