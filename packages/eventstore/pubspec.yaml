@@ -1,5 +1,5 @@
-name: eventstore_sqflite
-description: "Nostr event store with sqflite"
+name: eventstore
+description: "Nostr event store"
 version: 0.0.1
 publish_to: none
 
@@ -15,10 +15,6 @@ dependencies:
     git:
       url: https://github.com/kumulynja/dartstr.git
       path: packages/nip01
-      version: ^0.0.1
-  eventstore:
-    path: https://github.com/1l0/eventstore-flutter.git
-      path: packages/eventstore
       version: ^0.0.1
 
 dev_dependencies:
