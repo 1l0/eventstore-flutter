@@ -17,7 +17,8 @@ dependencies:
       path: packages/nip01
       version: ^0.0.1
   eventstore:
-    path: https://github.com/1l0/eventstore-flutter.git
+    git:
+      url: https://github.com/1l0/eventstore-flutter.git
       path: packages/eventstore
       version: ^0.0.1
 
