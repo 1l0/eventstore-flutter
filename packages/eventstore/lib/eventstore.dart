@@ -7,7 +7,7 @@ abstract interface class Store {
   Future<void> init();
   Future<void> close();
 
-  Future<List<Event>> queryEvents(Filters filter);
+  Stream<Event> queryEvents(Filters filter);
   Future<void> deleteEvent(Event event);
   Future<void> saveEvent(Event event);
 }

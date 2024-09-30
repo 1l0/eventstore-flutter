@@ -64,9 +64,9 @@ CREATE INDEX IF NOT EXISTS kindtimeidx ON event(kind,created_at DESC)''');
   }
 
   @override
-  Future<List<Event>> queryEvents(Filters filter) async {
+  Stream<Event> queryEvents(Filters filter) async* {
     var db = await _db;
-    return queryEventsImpl(db, filter);
+    yield* queryEventsImpl(db, filter);
   }
 
   @override
