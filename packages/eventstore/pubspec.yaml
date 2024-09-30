@@ -1,6 +1,6 @@
 name: eventstore
 description: "Nostr event store"
-version: 0.0.2
+version: 0.0.3
 publish_to: none
 
 environment:
@@ -11,11 +11,7 @@ dependencies:
   fixnum: ^1.1.0
   flutter:
     sdk: flutter
-  nip01:
-    git:
-      url: https://github.com/kumulynja/dartstr.git
-      path: packages/nip01
-      version: ^0.0.1
+  nip01: any
 
 dev_dependencies:
   flutter_test:

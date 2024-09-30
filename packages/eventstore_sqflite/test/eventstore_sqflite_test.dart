@@ -14,9 +14,9 @@ void main() {
     ];
     final encoded = jsonEncode(list);
     print(encoded);
-    final decoded = jsonDecode(encoded);
-    print(decoded);
-    final dec = List.from(decoded);
+    final List<dynamic> decoded = jsonDecode(encoded);
+    final List<List<String>> dec =
+        decoded.map((value) => List<String>.from(value)).toList();
     print(dec);
   });
 }

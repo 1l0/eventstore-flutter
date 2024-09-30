@@ -12,20 +12,9 @@ import 'save.dart';
 class SqfliteBackend implements Store {
   SqfliteBackend({
     required this.path,
-    this.queryLimit = 100,
-    this.queryIDsLimit = 500,
-    this.queryAuthorsLimit = 500,
-    this.queryKindsLimit = 10,
-    this.queryTagsLimit = 10,
   });
 
   final String path;
-
-  final int queryLimit;
-  final int queryIDsLimit;
-  final int queryAuthorsLimit;
-  final int queryKindsLimit;
-  final int queryTagsLimit;
 
   late final Future<Database> _db = () async {
     return await openDatabase(path, version: 1, onCreate: (db, version) async {
