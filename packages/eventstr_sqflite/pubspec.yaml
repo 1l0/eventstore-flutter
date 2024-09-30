@@ -1,7 +1,7 @@
-name: eventstore_sqflite
+name: eventstr_sqflite
 description: "Nostr event store with sqflite"
 version: 0.0.1
-publish_to: none
+repository: https://github.com/1l0/eventstore-flutter/tree/master/packages/eventstr_sqflite
 
 environment:
   sdk: ^3.5.3
@@ -12,11 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   nip01: ^0.0.1
-  eventstore:
-    git:
-      url: https://github.com/1l0/eventstore-flutter.git
-      path: packages/eventstore
-      version: ^0.0.3
+  eventstr: ^0.0.3
   sqflite_common_ffi: ^2.3.3+1
   sqflite_common_ffi_web: ^0.4.5+3
   sqflite: ^2.3.3+2

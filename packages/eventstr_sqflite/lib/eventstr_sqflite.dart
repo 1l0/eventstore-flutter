@@ -1,3 +1,3 @@
-library eventstore_sqflite;
+library eventstr_sqflite;
 
 export 'src/sqflite.dart';

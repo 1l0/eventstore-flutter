@@ -1,7 +1,7 @@
-name: eventstore
+name: eventstr
 description: "Nostr event store"
 version: 0.0.3
-publish_to: none
+repository: https://github.com/1l0/eventstore-flutter/tree/master/packages/eventstr
 
 environment:
   sdk: ^3.5.3
@@ -11,7 +11,7 @@ dependencies:
   fixnum: ^1.1.0
   flutter:
     sdk: flutter
-  nip01: any
+  nip01: ^0.0.1
 
 dev_dependencies:
   flutter_test:

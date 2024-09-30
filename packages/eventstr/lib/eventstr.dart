@@ -1,4 +1,4 @@
-library eventstore;
+library eventstr;
 
 import 'package:fixnum/fixnum.dart';
 import 'package:nip01/nip01.dart';
