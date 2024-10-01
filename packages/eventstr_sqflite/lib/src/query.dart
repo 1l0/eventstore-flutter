@@ -43,33 +43,33 @@ Stream<Event> queryEventsImpl(DatabaseExecutor client, Filters filters) async* {
   final args = <Object>[];
 
   if (filters.ids != null) {
-    if (filters.ids!.isNotEmpty && filters.ids!.length <= queryIDsLimit) {
-      args.addAll(filters.ids!);
+    final ids = filters.ids!;
+    if (ids.isNotEmpty && ids.length <= queryIDsLimit) {
+      args.addAll(ids);
     }
-    conditions
-        .add('id IN (${List.filled(filters.ids!.length, '?').join(',')})');
+    conditions.add('id IN (${List.filled(ids.length, '?').join(',')})');
   }
 
   if (filters.authors != null) {
-    if (filters.authors!.isNotEmpty &&
-        filters.authors!.length <= queryAuthorsLimit) {
-      args.addAll(filters.authors!);
+    final authors = filters.authors!;
+    if (authors.isNotEmpty && authors.length <= queryAuthorsLimit) {
+      args.addAll(authors);
     }
-    conditions.add(
-        'pubkey IN (${List.filled(filters.authors!.length, '?').join(',')})');
+    conditions.add('pubkey IN (${List.filled(authors.length, '?').join(',')})');
   }
 
   if (filters.kinds != null) {
-    if (filters.kinds!.isNotEmpty && filters.kinds!.length <= queryKindsLimit) {
-      args.addAll(filters.kinds!);
+    final kinds = filters.kinds!;
+    if (kinds.isNotEmpty && kinds.length <= queryKindsLimit) {
+      args.addAll(kinds);
     }
-    conditions
-        .add('kind IN (${List.filled(filters.kinds!.length, '?').join(',')})');
+    conditions.add('kind IN (${List.filled(kinds.length, '?').join(',')})');
   }
 
   int totalTags = 0;
   if (filters.tags != null) {
-    filters.tags!.forEach((key, values) {
+    final tags = filters.tags!;
+    tags.forEach((key, values) {
       if (values.isEmpty) {
         throw Exception('empty tag set');
       }
@@ -90,20 +90,24 @@ Stream<Event> queryEventsImpl(DatabaseExecutor client, Filters filters) async* {
   }
 
   if (filters.since != null) {
+    final since = filters.since!;
     conditions.add('created_at >= ?');
-    args.add(filters.since!);
+    args.add(since);
   }
   if (filters.until != null) {
+    final until = filters.until!;
     conditions.add('created_at <= ?');
-    args.add(filters.until!);
+    args.add(until);
   }
+  // TODO: search
 
   if (conditions.isEmpty) {
     conditions.add('true');
   }
 
   if (filters.limit != null && filters.limit! <= queryLimit) {
-    args.add(filters.limit!);
+    final limit = filters.limit!;
+    args.add(limit);
   } else {
     args.add(queryLimit);
   }
